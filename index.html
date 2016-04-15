@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Video app with React</title>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	</head>
+	<body>
+		<header class="main-header">
+			<nav class="navbar navbar-default">
+				<h2 class="sr-only">Main navigation</h2>
+				<div class="container">
+					<h1 class="logo pull-left">
+						<span Logo</span>
+					</h1>
+					<div class="navbar-header navbar-right"><a class="navbar-brand pull-right" href="#">Bartek Fryzowicz</a></div>
+				</div>
+				<div class="secondary">
+					<div class="container">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sec-menu" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							</button>
+						</div>
+						<div class="collapse navbar-collapse secondary" id="sec-menu">
+							<ul class="nav navbar-nav">
+								<li><a href="#/Add">Add new video</a></li>
+								<li><a href="#/">All</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<section id="root" class="container"></section>
+
+
+		<script src="vendors/jquery.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<script src="dist/bundle.js"></script>
+	</body>
+</html>

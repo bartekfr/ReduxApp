@@ -1,0 +1,178 @@
+/* Generic
+==================================================================== */
+
+
+%clearfix {
+	&:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.btn {
+	margin-right: 10px;
+}
+
+#root {
+	padding-top: 30px;
+
+}
+
+/* Components
+==================================================================== */
+.main-header {
+
+	.logo {
+		margin: 20px 0;
+		width: 60px;
+	}
+
+	.navbar:first-child {
+		border-bottom: 0;
+	}
+
+	.secondary {
+		background: #eee;
+
+		a {
+			color: #fff;
+
+			&:hover {
+				color: #000;
+				background-color: #fff !important;
+			}
+		}
+	}
+}
+
+
+.videos-list-page {
+	padding: 0 15px;
+}
+
+.videos-list {
+
+	@extend %clearfix;
+
+	$videoPadding: 15px;
+	$thumbnailWidth: 130px;
+
+	margin-bottom: 30px;
+
+	li {
+		float: left;
+		margin: 20px 0 0;
+		padding-right: 10px;
+		width: 50%;
+
+		&:nth-child(2n) {
+			padding-right: 0;
+			padding-left: 10px;
+		}
+	}
+
+	section {
+		@extend %clearfix;
+
+		position: relative;
+		padding: $videoPadding;
+		border: 1px solid #eee;
+		box-shadow: 0 0 10px #eee;
+	}
+
+	.thumbnail-holder {
+		position: absolute;
+		top: $videoPadding;
+		width: $thumbnailWidth;
+		height: 60px;
+		overflow: hidden;
+		float: left;
+		display: block;
+		cursor: pointer;
+	}
+
+	.video-content {
+		width: 100%;
+		padding-left: $thumbnailWidth + $videoPadding;
+		float: right;
+	}
+
+	.title {
+		margin-top: 0;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+}
+
+.pagination-wrapper {
+	clear: both;
+	margin-top: 30px;
+}
+
+
+form {
+	margin-top: 30px;
+
+	.error-msg {
+		display: none;
+	}
+
+	&.error {
+		.error-msg {
+			display: block;
+		}
+	}
+}
+
+
+/* Media queries (should be mobile first :/)
+==================================================================== */
+@media only screen and (max-width: 768px) {
+	.videos-list {
+
+		.thumbnail-holder {
+			position: static;
+			width: 100%;
+			margin-right: 0;
+			padding-right: 0;
+			float: none
+		}
+
+		.video-content {
+			padding-left: 0;
+			float: none;
+			margin-top: 10px;
+		}
+	}
+}
+
+@media only screen and (max-width: 480px) {
+	.videos-list {
+
+		li {
+			width: 100%;
+			margin-left: 0;
+			padding-right: 0;
+
+			&:nth-child(2n) {
+				padding-right: 0;
+				padding-left: 0;
+			}
+		}
+
+		.thumbnail-holder {
+			height: 100px;
+		}
+	}
+}
+
+
