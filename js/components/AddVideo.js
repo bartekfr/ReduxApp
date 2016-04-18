@@ -70,7 +70,7 @@ class AddVideo extends Component {
 }
 
 AddVideo.contextTypes = {
-	router: PropTypes.route
+	router: React.PropTypes.object.isRequired
 };
 
 AddVideo = connect()(AddVideo)

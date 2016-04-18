@@ -15,7 +15,7 @@ var initData = [
 var initVideosState = Immutable.fromJS(initData);
 
 //TODO: spli to separate files
-const videos = (state =  initVideosState, action) => {
+const videosList = (state =  initVideosState, action) => {
 	switch (action.type) {
 		case 'ADD_VIDEO':
 			return state.push(Map({
@@ -40,7 +40,7 @@ const videos = (state =  initVideosState, action) => {
 	}
 };
 
-const pagination = (state = 0, action) => {
+const videosPaginationCurrentPage = (state = 0, action) => {
 	switch (action.type) {
 		case 'SET_PAGE':
 			return action.page;
@@ -51,8 +51,8 @@ const pagination = (state = 0, action) => {
 
 
 const videoApp = combineReducers({
-	videos,
-	pagination,
+	videosList,
+	videosPaginationCurrentPage,
 	routing: routerReducer
 });
 

@@ -1,4 +1,4 @@
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import addVideo from '../components/AddVideo';
 import {update, remove, setPage}  from '../actions';
 
@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => {
 	return {
 		title: 'Edit video data',
 		editMode: true,
-		video: getVideo(state.videos, id)
+		video: getVideo(state.videosList, id)
 	}
 };
 
