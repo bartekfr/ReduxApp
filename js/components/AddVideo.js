@@ -42,22 +42,22 @@ class AddVideo extends Component {
 	}
 	render() {
 		if (this.props.editMode) {
-			this.removeBtn = (<a className="btn btn-default btn-danger" href="#" onClick={this.remove.bind(this)}>Remove</a>);
+			this.removeBtn = (<a className="button alert" href="#" onClick={this.remove.bind(this)}>Remove</a>);
 		}
 
 		return (
 			<div>
 				<h2>{this.props.title || 'Add new video'}</h2>
 				<form onSubmit={this.submit.bind(this)} ref="form">
-					<div className="form-group">
-						<input className="form-control" ref='title' />
+					<div className="row">
+						<input className="medium-6 columns" ref='title' />
 					</div>
-					<div className="form-group">
-						<input className="form-control" ref='img' />
+					<div className="row">
+						<input className="medium-6 columns" ref='img' />
 					</div>
 					<p className="error-msg">There are some error. Please correct them</p>
 					<p>
-						<button ref="submit" className="btn btn-default" type="submit">
+						<button ref="submit" className="button" type="submit">
 							Submit
 						</button>
 						{this.removeBtn}

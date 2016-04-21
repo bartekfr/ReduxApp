@@ -21,6 +21,7 @@ module.exports =  {
 		}]
 	},
   sassLoader: {
-    outputStyle: 'compressed'
+    outputStyle: 'compressed',
+    includePaths: ['node_modules/foundation-sites/scss']
   }
 }

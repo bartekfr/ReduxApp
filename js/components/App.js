@@ -9,10 +9,9 @@ const App = (props) => (
 			{props.children}
 		</div>
 		<nav className="panel-footer">
-			<h3	className="sr-only">Footer navigation</h3>
-			<ul className="nav nav-pills">
-				<li role="presentation"><Link activeClassName="active" to={`/`}>All</Link></li>
-				<li role="presentation"><Link to={`/add`}>Add new video</Link></li>
+			<ul className="menu">
+				<li><Link activeClassName="active" to={`/`}>All</Link></li>
+				<li><Link to={`/add`}>Add new video</Link></li>
 			</ul>
 		</nav>
 	</div>

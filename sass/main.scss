@@ -1,6 +1,12 @@
+
+/* Imports
+==================================================================== */
+@import 'foundation';
+@include foundation-everything;
+
+
 /* Generic
 ==================================================================== */
-
 
 %clearfix {
 	&:after {
@@ -10,107 +16,70 @@
 	}
 }
 
+.off-canvas-wrapper,
+.off-canvas-wrapper-inner,
+.off-canvas {
+	height: 100%;
+}
+
+.off-canvas-content {
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
 ul {
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
 }
 
-.btn {
+.button {
 	margin-right: 10px;
 }
 
-#root {
-	padding-top: 30px;
+.wrapper {
+	max-width: 1200px;
+	margin: auto;
+	padding: 0 15px;
+}
 
+.main-header {
+	margin-bottom: 30px;
+}
+
+.hidden {
+	display: none;
 }
 
 /* Components
 ==================================================================== */
-.main-header {
 
-	.logo {
-		margin: 20px 0;
-		width: 60px;
-	}
-
-	.navbar:first-child {
-		border-bottom: 0;
-	}
-
-	.secondary {
-		background: #eee;
-
-		a {
-			color: #fff;
-
-			&:hover {
-				color: #000;
-				background-color: #fff !important;
-			}
-		}
-	}
-}
-
-
-.videos-list-page {
-	padding: 0 15px;
+.off-canvas {
+	background: $light-gray;
 }
 
 .videos-list {
-
 	@extend %clearfix;
 
-	$videoPadding: 15px;
-	$thumbnailWidth: 130px;
-
-	margin-bottom: 30px;
-
-	li {
-		float: left;
-		margin: 20px 0 0;
-		padding-right: 10px;
-		width: 50%;
-
-		&:nth-child(2n) {
-			padding-right: 0;
-			padding-left: 10px;
-		}
-	}
-
-	section {
+	.video-list-content {
 		@extend %clearfix;
 
-		position: relative;
-		padding: $videoPadding;
-		border: 1px solid #eee;
-		box-shadow: 0 0 10px #eee;
+		margin-bottom: 20px;
+
+		.button {
+			margin-bottom: 0;
+		}
+
 	}
 
 	.thumbnail-holder {
-		position: absolute;
-		top: $videoPadding;
-		width: $thumbnailWidth;
-		height: 60px;
-		overflow: hidden;
-		float: left;
 		display: block;
-		cursor: pointer;
-	}
-
-	.video-content {
-		width: 100%;
-		padding-left: $thumbnailWidth + $videoPadding;
-		float: right;
 	}
 
 	.title {
-		margin-top: 0;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
+		margin-top: 20px;
 	}
-
 }
 
 .pagination-wrapper {
@@ -121,6 +90,16 @@ ul {
 
 form {
 	margin-top: 30px;
+
+	.row {
+		margin: 10px 0 ;
+	}
+
+	input {
+		border: 1px solid $medium-gray;
+		padding: 5px;
+
+	}
 
 	.error-msg {
 		display: none;
@@ -136,43 +115,55 @@ form {
 
 /* Media queries (should be mobile first :/)
 ==================================================================== */
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 480px) {
 	.videos-list {
 
+		margin-bottom: 30px;
+
 		.thumbnail-holder {
-			position: static;
-			width: 100%;
-			margin-right: 0;
-			padding-right: 0;
-			float: none
+			overflow: hidden;
+			height: 130px;
+		}
+
+		.title {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.videos-list {
+		$videoPadding: 15px;
+
+		.video-list-content {
+			display: flex;
+			padding: $videoPadding;
+			border: 1px solid #eee;
+			box-shadow: 0 0 10px #eee;
+		}
+
+		.thumbnail-holder {
+			width: 130px;
+			height: 75px;
+			flex: 0 0 auto;
+			overflow: hidden;
+			margin-right: 10px;
 		}
 
 		.video-content {
-			padding-left: 0;
-			float: none;
-			margin-top: 10px;
+			flex: 0 1 auto;
+			min-width: 0;
+		}
+
+		.title {
+			margin-top: -10px;
 		}
 	}
+
 }
 
-@media only screen and (max-width: 480px) {
-	.videos-list {
-
-		li {
-			width: 100%;
-			margin-left: 0;
-			padding-right: 0;
-
-			&:nth-child(2n) {
-				padding-right: 0;
-				padding-left: 0;
-			}
-		}
-
-		.thumbnail-holder {
-			height: 100px;
-		}
-	}
-}
 
 
