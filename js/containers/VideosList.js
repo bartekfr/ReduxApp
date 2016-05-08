@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import List from '../components/VideosList';
 import pagination from '../components/Pagination';
-import {setPage}  from '../actions';
+import {setPage, loadVideos}  from '../actions';
 import CONFIG  from '../const';
 
 const perPage = CONFIG.perPage;
@@ -23,8 +23,11 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		onPageClick: (page) => {
 			dispatch(setPage(page));
+		},
+		loadVideos: () => {
+			dispatch(loadVideos());
 		}
-	}
+	};
 };
 
 const VideosList = connect(

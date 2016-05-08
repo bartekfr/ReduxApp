@@ -1,21 +1,9 @@
 import { combineReducers } from 'redux';
 import Immutable, {List, Map} from 'immutable';
-import { routerReducer } from 'react-router-redux';
+import {routerReducer} from 'react-router-redux';
 
-var initData = [
-	{id: 0, title: 'The very very long story to be told soon', img: 'http://bfryzowicz.pl/img/mirror.jpg'},
-	{id: 1, title: 'Hobbit', img: 'http://bfryzowicz.pl/img/flower.jpg'},
-	{id: 2, title: 'Lord of the rings', img: 'http://bfryzowicz.pl/img/korony.jpg'},
-	{id: 3, title: 'Terminator 21', img: 'http://bfryzowicz.pl/img/mirror.jpg'},
-	{id: 4, title: 'The Big bang theory', img: 'http://bfryzowicz.pl/img/flower.jpg'},
-	{id: 5, title: 'Harry Potter', img: 'http://bfryzowicz.pl/img/mirror.jpg'},
-	{id: 6, title: 'Start Wars', img: 'http://bfryzowicz.pl/img/mirror.jpg'}
-];
-
-var initVideosState = Immutable.fromJS(initData);
-
-//TODO: spli to separate files
-const videosList = (state =  initVideosState, action) => {
+//TODO: split into separate files
+const videosList = (state = List(), action) => {
 	switch (action.type) {
 		case 'ADD_VIDEO':
 			return state.push(Map({
@@ -35,6 +23,8 @@ const videosList = (state =  initVideosState, action) => {
 				return action.id != video.get('id')
 
 			});
+		case 'VIDEOS_LOADED':
+			return state.merge(action.videos);
 		default:
 			return state;
 	}

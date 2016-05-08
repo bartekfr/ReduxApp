@@ -1,19 +1,20 @@
 import React from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
-import {createStore, combineReducers} from 'redux';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
 import reducers from './reducers';
-import { Router, Route, hashHistory, IndexRoute  } from 'react-router';
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
+import {Router, Route, hashHistory, IndexRoute} from 'react-router';
+import {syncHistoryWithStore, routerReducer} from 'react-router-redux';
+import thunkMiddleware from 'redux-thunk'
 
 //Components
 import App from './components/App';
 import Videos from './containers/VideosList';
 import Add from './containers/AddVideo';
 import Edit from './containers/EditVideo';
+import {loadVideos} from './actions';
 
 import css from "../sass/main.scss";
-
 
 //import foundation components
 import 'foundation-sites/js/foundation.core.js';
@@ -23,7 +24,14 @@ import 'foundation-sites/js/foundation.util.motion.js';
 import 'foundation-sites/js/foundation.offcanvas.js';
 
 
-const store = createStore(reducers);
+const store = createStore(
+	reducers,
+	{},
+	applyMiddleware(thunkMiddleware)
+);
+
+store.dispatch(loadVideos());
+
 const history = syncHistoryWithStore(hashHistory, store);
 
 render(
@@ -38,6 +46,5 @@ render(
 	</Provider>,
 	document.getElementById('root')
 );
-
 
 $(document).foundation();
