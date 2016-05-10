@@ -2,10 +2,25 @@ import React, {PropTypes, Component} from 'react';
 import Pagination from '../components/Pagination';
 import {Link} from 'react-router';
 
-const VideosList = ({videos, ...paginationProps, loadVideos}) => {
+const VideosList = ({videos, ...paginationProps, loadVideos, loadingStatus}) => {
+	let ajaxLoader = '';
+	let errorMsg = '';
+	let loadingStatusJS = loadingStatus.toJS();
+	let error = loadingStatusJS.error;
+
+	if (loadingStatusJS.showLoader) {
+		ajaxLoader = <h3>Loading...</h3>;
+	}
+	if (error) {
+		console.log(error)
+		errorMsg = <p>{error}</p>;
+	}
+
 	return (
 		<section className="videos-list-page">
 			<h2>Your videos</h2>
+			{ajaxLoader}
+			{errorMsg}
 			<ul className="videos-list row">
 				{videos.map(video => {
 					return <li className="medium-6 columns" key={video.get('id')}>

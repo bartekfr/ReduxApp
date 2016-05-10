@@ -29,6 +29,12 @@ export const setPage = (page) => {
 	}
 };
 
+export const videosLoading = () => {
+	return {
+		type: 'VIDEOS_LOADING'
+	}
+};
+
 export const videosLoaded = (videos) => {
 	return {
 		type: 'VIDEOS_LOADED',
@@ -36,11 +42,20 @@ export const videosLoaded = (videos) => {
 	}
 };
 
-//TODO: add error handling
-export const loadVideos = () => {
+export const videosError = (error) => {
+	return {
+		type: 'VIDEOS_ERROR',
+		error
+	}
+};
+
+export const videosLoad = () => {
 	return dispatch => {
+		dispatch(videosLoading());
+
 		return fetch('/js/data.json')
 			.then(response => response.json())
 			.then(json => dispatch(videosLoaded(json)))
+			.catch(err =>  dispatch(videosError(err)));
 	}
 };

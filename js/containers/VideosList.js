@@ -15,7 +15,8 @@ const mapStateToProps = (state) => {
 		videos: getVideos(state.videosList, state.videosPaginationCurrentPage),
 		page: state.videosPaginationCurrentPage,
 		all: state.videosList.size,
-		perPage: CONFIG.perPage
+		perPage: CONFIG.perPage,
+		loadingStatus: state.loadingStatus
 	}
 };
 

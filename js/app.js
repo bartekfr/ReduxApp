@@ -12,7 +12,7 @@ import App from './components/App';
 import Videos from './containers/VideosList';
 import Add from './containers/AddVideo';
 import Edit from './containers/EditVideo';
-import {loadVideos} from './actions';
+import {videosLoad} from './actions';
 
 import css from "../sass/main.scss";
 
@@ -30,7 +30,7 @@ const store = createStore(
 	applyMiddleware(thunkMiddleware)
 );
 
-store.dispatch(loadVideos());
+store.dispatch(videosLoad());
 
 const history = syncHistoryWithStore(hashHistory, store);
 

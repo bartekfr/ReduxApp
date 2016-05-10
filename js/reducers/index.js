@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import Immutable, {List, Map} from 'immutable';
 import {routerReducer} from 'react-router-redux';
 
-//TODO: split into separate files
+//TODO: split reducers into separate files
 const videosList = (state = List(), action) => {
 	switch (action.type) {
 		case 'ADD_VIDEO':
@@ -30,6 +30,25 @@ const videosList = (state = List(), action) => {
 	}
 };
 
+const loadingStatus = (state = Map({
+	showLoader: false,
+	error: ''
+}), action) => {
+	switch (action.type) {
+		case 'VIDEOS_LOADED':
+			return state.set('showLoader', false);
+		case 'VIDEOS_LOADING':
+			return state.set('showLoader', true);
+		case 'VIDEOS_ERROR':
+			return state.merge({
+				'showLoader': false,
+				'error': action.error.message
+			});
+		default:
+			return state;
+	}
+};
+
 const videosPaginationCurrentPage = (state = 0, action) => {
 	switch (action.type) {
 		case 'SET_PAGE':
@@ -42,6 +61,7 @@ const videosPaginationCurrentPage = (state = 0, action) => {
 
 const videoApp = combineReducers({
 	videosList,
+	loadingStatus,
 	videosPaginationCurrentPage,
 	routing: routerReducer
 });
