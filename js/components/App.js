@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import AddVideo from '../containers/AddVideo';
-import Videos from '../containers/VideosList';
 import {Link} from 'react-router';
 
 const App = (props) => (

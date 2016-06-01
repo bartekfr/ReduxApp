@@ -73,6 +73,4 @@ AddVideo.contextTypes = {
 	router: React.PropTypes.object.isRequired
 };
 
-AddVideo = connect()(AddVideo)
-
 export default AddVideo;
