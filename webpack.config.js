@@ -5,6 +5,7 @@ module.exports =  {
 		filename: "bundle.js",
 		publicPath: '/dist'
 	},
+	devtool: '#source-map',
 	module: {
 		loaders: [{
 			loader: 'babel',
