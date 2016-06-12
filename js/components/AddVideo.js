@@ -3,13 +3,15 @@ import {connect} from 'react-redux';
 import {add} from '../actions';
 import { Router, PropTypes } from 'react-router';
 
+
+/* form fields editing by-passess redux so that store is not modified until form is submitted (via redux action)
+*/
 class AddVideo extends Component {
-	componentDidMount() {
-		if (this.props.editMode) {
+	componentDidUpdate() {
+		if (this.props.editMode && this.props.video.size) {
 			this.video = this.props.video.toJS()[0];
 			this.refs.title.value = this.video.title;
 			this.refs.img.value = this.video.img;
-
 		}
 	}
 	validate() {
@@ -66,7 +68,6 @@ class AddVideo extends Component {
 			</div>
 		)
 	}
-
 }
 
 AddVideo.contextTypes = {

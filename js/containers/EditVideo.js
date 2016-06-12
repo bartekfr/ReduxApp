@@ -10,7 +10,7 @@ const getVideo = (videos, id) => {
 
 
 const mapStateToProps = (state, ownProps) => {
-	let id = ownProps.routeParams.id;
+	let id = ownProps.params.id;
 	return {
 		title: 'Edit video data',
 		editMode: true,
