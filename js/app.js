@@ -4,7 +4,6 @@ import {Provider} from 'react-redux';
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import reducers from './reducers';
 import {Router, Route, hashHistory, IndexRoute} from 'react-router';
-import {syncHistoryWithStore, routerReducer} from 'react-router-redux';
 import thunkMiddleware from 'redux-thunk'
 
 //Components
@@ -29,11 +28,9 @@ const store = createStore(
 	applyMiddleware(thunkMiddleware)
 );
 
-const history = syncHistoryWithStore(hashHistory, store);
-
 render(
 	<Provider store={store}>
-		<Router history={history}>
+		<Router history={hashHistory}>
 			<Route path="/" component={App}>
 				<IndexRoute component={Videos} />
 				<Route path="add" component={Add} />

@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
 import Immutable, {List, Map} from 'immutable';
-import {routerReducer} from 'react-router-redux';
 
 //TODO: split reducers into separate files
 const videosList = (state = List(), action) => {
@@ -57,8 +56,7 @@ const common = (state = Map(commonInit), action) => {
 const videoApp = combineReducers({
 	videosList,
 	common,
-	videosPaginationCurrentPage,
-	routing: routerReducer
+	videosPaginationCurrentPage
 });
 
 export default videoApp;
