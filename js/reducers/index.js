@@ -30,25 +30,6 @@ const videosList = (state = List(), action) => {
 	}
 };
 
-const loadingStatus = (state = Map({
-	showLoader: false,
-	error: ''
-}), action) => {
-	switch (action.type) {
-		case 'VIDEOS_LOADED':
-			return state.set('showLoader', false);
-		case 'VIDEOS_LOADING':
-			return state.set('showLoader', true);
-		case 'VIDEOS_ERROR':
-			return state.merge({
-				'showLoader': false,
-				'error': action.error.message
-			});
-		default:
-			return state;
-	}
-};
-
 const videosPaginationCurrentPage = (state = 0, action) => {
 	switch (action.type) {
 		case 'SET_PAGE':
@@ -58,10 +39,24 @@ const videosPaginationCurrentPage = (state = 0, action) => {
 	}
 };
 
+let commonInit = {
+  loading: false,
+};
+
+const common = (state = Map(commonInit), action) => {
+  switch (action.type) {
+    case 'AJAX_START':
+      return state.set('loading', true);
+    case 'AJAX_END':
+      return state.set('loading', false);
+    default:
+      return state;
+  }
+};
 
 const videoApp = combineReducers({
 	videosList,
-	loadingStatus,
+	common,
 	videosPaginationCurrentPage,
 	routing: routerReducer
 });

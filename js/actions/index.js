@@ -29,11 +29,6 @@ export const setPage = (page) => {
 	}
 };
 
-export const videosLoading = () => {
-	return {
-		type: 'VIDEOS_LOADING'
-	}
-};
 
 export const videosLoaded = (videos) => {
 	return {
@@ -42,20 +37,30 @@ export const videosLoaded = (videos) => {
 	}
 };
 
-export const videosError = (error) => {
-	return {
-		type: 'VIDEOS_ERROR',
-		error
-	}
-};
-
 export const videosLoad = () => {
 	return dispatch => {
-		dispatch(videosLoading());
+		dispatch(ajaxStart());
 
 		return fetch('/js/data.json')
 			.then(response => response.json())
-			.then(json => dispatch(videosLoaded(json)))
-			.catch(err =>  dispatch(videosError(err)));
+			.then(json => {
+				dispatch(videosLoaded(json));
+				dispatch(ajaxEnd())
+			})
+			.catch(err =>  dispatch(ajaxError(err)));
 	}
 };
+
+/* generic actions */
+export const ajaxStart = () => ({
+    type: 'AJAX_START',
+});
+
+export const ajaxEnd = () => ({
+    type: 'AJAX_END',
+});
+
+export const ajaxError = (error) => ({
+    type: 'AJAX_ERROR',
+    error
+});

@@ -8,11 +8,10 @@ import {syncHistoryWithStore, routerReducer} from 'react-router-redux';
 import thunkMiddleware from 'redux-thunk'
 
 //Components
-import App from './components/App';
+import App from './containers/App';
 import Videos from './containers/VideosList';
 import Add from './containers/AddVideo';
 import Edit from './containers/EditVideo';
-import {videosLoad} from './actions';
 
 import css from "../sass/main.scss";
 
@@ -29,8 +28,6 @@ const store = createStore(
 	{},
 	applyMiddleware(thunkMiddleware)
 );
-
-store.dispatch(videosLoad());
 
 const history = syncHistoryWithStore(hashHistory, store);
 
