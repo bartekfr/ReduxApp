@@ -10,10 +10,11 @@ const getVideos = (videos, page) => {
 	return videos.slice(page * perPage, (page + 1) * perPage);
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+	var currentPage = ownProps.params.page || 0;
 	return {
-		videos: getVideos(state.videosList, state.videosPaginationCurrentPage),
-		page: state.videosPaginationCurrentPage,
+		videos: getVideos(state.videosList, currentPage),
+		page: currentPage,
 		all: state.videosList.size,
 		perPage: CONFIG.perPage,
 		loadingStatus: state.common.get('loading')

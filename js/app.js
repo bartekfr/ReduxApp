@@ -33,6 +33,7 @@ render(
 		<Router history={hashHistory}>
 			<Route path="/" component={App}>
 				<IndexRoute component={Videos} />
+				<Route path="videos/:page" component={Videos} />
 				<Route path="add" component={Add} />
 				<Route path="edit/:id" component={Edit} />
 			</Route>

@@ -1,13 +1,14 @@
 import React, { PropTypes, Component } from 'react';
+import {Link} from 'react-router';
 
-const Pagination = ({page,all, perPage, onPageClick}) => {
+const Pagination = ({page, all, perPage, params}) => {
 	var pages = [];
 	var pagesCount = Math.ceil(all / perPage);
 	var show = pagesCount <= 1 ? false : true;
 
 	for(var i = 0; i < pagesCount; i++ ) {
 		let active = page  == i ? true : false;
-		pages.push(<li className={active ? 'active' : ''} key={i}><a href="#" onClick={onPageClick.bind(this, i)}>{i + 1}</a></li>);
+		pages.push(<li key={i}><Link activeClassName='current' to={'videos/' + i}>{i + 1}</Link></li>);
 
 	}
 	return (

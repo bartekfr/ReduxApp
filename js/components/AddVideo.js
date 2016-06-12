@@ -1,8 +1,7 @@
 import React, { Component} from 'react';
 import {connect} from 'react-redux';
 import {add} from '../actions';
-import { Router, PropTypes } from 'react-router';
-
+import { hashHistory } from 'react-router'
 
 /* form fields editing by-passess redux so that store is not modified until form is submitted (via redux action)
 */
@@ -35,11 +34,11 @@ class AddVideo extends Component {
 			return false;
 		}
 		this.props.update({title: this.refs.title.value, img: this.refs.img.value});
-		this.context.router.push('/');
+		hashHistory.push('/');
 	}
 	remove(e) {
 		e.preventDefault();
-		this.context.router.push('/');
+		hashHistory.push('/');
 		this.props.remove(this.video.id);
 	}
 	render() {
@@ -69,9 +68,5 @@ class AddVideo extends Component {
 		)
 	}
 }
-
-AddVideo.contextTypes = {
-	router: React.PropTypes.object.isRequired
-};
 
 export default AddVideo;

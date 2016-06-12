@@ -29,15 +29,6 @@ const videosList = (state = List(), action) => {
 	}
 };
 
-const videosPaginationCurrentPage = (state = 0, action) => {
-	switch (action.type) {
-		case 'SET_PAGE':
-			return action.page;
-		default:
-			return state;
-	}
-};
-
 let commonInit = {
   loading: false,
 };
@@ -56,7 +47,6 @@ const common = (state = Map(commonInit), action) => {
 const videoApp = combineReducers({
 	videosList,
 	common,
-	videosPaginationCurrentPage
 });
 
 export default videoApp;

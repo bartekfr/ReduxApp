@@ -2,7 +2,7 @@ import React, {PropTypes, Component} from 'react';
 import Pagination from '../components/Pagination';
 import {Link} from 'react-router';
 
-const VideosList = ({videos, ...paginationProps, loadVideos}) => {
+const VideosList = ({videos, ...paginationProps}) => {
 	return (
 		<section className="videos-list-page">
 			<h2>Your videos</h2>
@@ -18,7 +18,6 @@ const VideosList = ({videos, ...paginationProps, loadVideos}) => {
 								<Link className="button small" to={'edit/' + video.get('id')}>Edit</Link>
 							</div>
 						</section>
-
 						</li>
 					})
 				}
