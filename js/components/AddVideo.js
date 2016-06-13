@@ -6,12 +6,18 @@ import { hashHistory } from 'react-router'
 /* form fields editing by-passess redux so that store is not modified until form is submitted (via redux action)
 */
 class AddVideo extends Component {
-	componentDidUpdate() {
+	setFormData() {
 		if (this.props.editMode && this.props.video.size) {
 			this.video = this.props.video.toJS()[0];
 			this.refs.title.value = this.video.title;
 			this.refs.img.value = this.video.img;
 		}
+	}
+	componentDidMount() {
+		this.setFormData();
+	}
+	componentDidUpdate() {
+		this.setFormData();
 	}
 	validate() {
 		var form = this.refs.form;
@@ -29,10 +35,10 @@ class AddVideo extends Component {
 	submit(e) {
 		e.preventDefault();
 		this.validate();
-
 		if (this.error) {
 			return false;
 		}
+
 		this.props.update({title: this.refs.title.value, img: this.refs.img.value});
 		hashHistory.push('/');
 	}
@@ -45,7 +51,6 @@ class AddVideo extends Component {
 		if (this.props.editMode) {
 			this.removeBtn = (<a className="button alert" href="#" onClick={this.remove.bind(this)}>Remove</a>);
 		}
-
 		return (
 			<div>
 				<h2>{this.props.title || 'Add new video'}</h2>
