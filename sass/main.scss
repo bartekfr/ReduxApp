@@ -62,6 +62,10 @@ ul {
 .videos-list {
 	@extend %clearfix;
 
+	.columns:last-child {
+		float:left;
+	}
+
 	.video-list-content {
 		@extend %clearfix;
 

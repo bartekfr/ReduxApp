@@ -2,21 +2,30 @@ import { combineReducers } from 'redux';
 import Immutable, {List, Map} from 'immutable';
 
 //TODO: split reducers into separate files
+const video = (state = Map(), action) => {
+	switch (action.type) {
+		case 'ADD_VIDEO':
+			return Map({
+				id: action.data.id,
+				title: action.data.title,
+				img: action.data.img
+			});
+		case 'UPDATE':
+			if(state.get('id') === action.id){
+				return state.set('title', action.data.title).set('img', action.data.img)
+			}
+			return state;
+		default:
+			return state;
+	}
+};
+
 const videosList = (state = List(), action) => {
 	switch (action.type) {
 		case 'ADD_VIDEO':
-			return state.push(Map({
-				id: state.last().get('id') + 1,
-				title: action.data.title,
-				img: action.data.img
-			}));
+			return state.push(video(undefined, action));
 		case 'UPDATE':
-			return state.map((video) => {
-				if(action.id == video.get('id')){
-					return video.set('title', action.data.title).set('img', action.data.img)
-				}
-				return video;
-			});
+			return state.map((item) => video(item, action));
 		case 'REMOVE':
 			return state.filter((video) => {
 				return action.id != video.get('id')
