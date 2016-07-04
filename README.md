@@ -1,5 +1,5 @@
 # Simple application for managing data items
-Data items represent videos in this case but they could be anything else (books, contacts)
+App for managing data items. Data items represent videos in this case but of course they could be anything else.
 
 Application uses: ES2015, React, Redux, Immutable, Webpack, Babel, Sass
 
