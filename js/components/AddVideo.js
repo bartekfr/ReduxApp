@@ -2,16 +2,31 @@ import React, { Component} from 'react';
 import {connect} from 'react-redux';
 import {add} from '../actions';
 import { hashHistory } from 'react-router'
+import shallowCompare from 'react-addons-shallow-compare';
 
-/* form fields editing by-passess redux so that store is not modified until form is submitted (via redux action)
+/* 
+	Editted form values are stored in componnet state until form is submitted - redux store is updated only when user submits form
 */
 class AddVideo extends Component {
-	setFormData() {
-		if (this.props.editMode && this.props.video.size) {
-			this.video = this.props.video.toJS()[0];
-			this.refs.title.value = this.video.title;
-			this.refs.img.value = this.video.img;
+	constructor() {
+		super();
+		this.state = {
+			title: '',
+			img: '',
+			error: false
 		}
+	}
+	setFormData() {
+		if (this.props.editMode && this.props.video.size && !this.dirty) {
+			this.video = this.props.video.toJS()[0];
+			this.setState({
+				title: this.video.title,
+				img: this.video.img
+			});
+		}
+	}
+	shouldComponentUpdate(nextProps, nextState) {
+		return shallowCompare(this, nextProps, nextState);
 	}
 	componentDidMount() {
 		this.setFormData();
@@ -20,17 +35,9 @@ class AddVideo extends Component {
 		this.setFormData();
 	}
 	validate() {
-		var form = this.refs.form;
-		var title = this.refs.title;
-
-		form.classList.remove('error');
-		this.error = false;
-
-		if (title.value === '') {
-			form.classList.add('error');
-			this.error = true;
-			return;
-		}
+		var title = this.state.title;
+		this.error = title === '' ? true : false;
+		this.setState({error: this.error})
 	}
 	submit(e) {
 		e.preventDefault();
@@ -38,14 +45,19 @@ class AddVideo extends Component {
 		if (this.error) {
 			return false;
 		}
-
-		this.props.update({title: this.refs.title.value, img: this.refs.img.value});
+		this.props.update({title: this.state.title, img: this.state.img});
 		hashHistory.push('/');
 	}
 	remove(e) {
 		e.preventDefault();
 		hashHistory.push('/');
 		this.props.remove(this.video.id);
+	}
+	updateField(field, e) {
+		this.dirty = true;
+		this.setState({
+			[field]: e.target.value
+		})
 	}
 	render() {
 		if (this.props.editMode) {
@@ -54,12 +66,12 @@ class AddVideo extends Component {
 		return (
 			<div>
 				<h2>{this.props.title || 'Add new video'}</h2>
-				<form onSubmit={this.submit.bind(this)} ref="form">
+				<form onSubmit={this.submit.bind(this)} ref="form" className={this.state.error ? 'error' : ''}>
 					<div className="row">
-						<input className="medium-6 columns" ref='title' />
+						<input type="text" className="medium-6 columns" value={this.state.title} onChange={this.updateField.bind(this, 'title')} />
 					</div>
 					<div className="row">
-						<input className="medium-6 columns" ref='img' />
+						<input type="text" className="medium-6 columns" value={this.state.img} onChange={this.updateField.bind(this, 'img')} />
 					</div>
 					<p className="error-msg">There are some error. Please correct them</p>
 					<p>
