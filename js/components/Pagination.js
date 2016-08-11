@@ -7,9 +7,7 @@ const Pagination = ({page, all, perPage, params}) => {
 	var show = pagesCount <= 1 ? false : true;
 
 	for(var i = 0; i < pagesCount; i++ ) {
-		let active = page  == i ? true : false;
 		pages.push(<li key={i}><Link activeClassName='current' to={'videos/' + i}>{i + 1}</Link></li>);
-
 	}
 	return (
 		<nav className={show ? 'pagination-wrapper' : 'pagination-wrapper hidden'}>
