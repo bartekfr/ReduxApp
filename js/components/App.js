@@ -1,10 +1,17 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
+import CONFIG  from '../const';
 
 class App extends Component {
 	constructor(props) {
 		super(props);
 		props.videosLoad();
+	}
+	getChildContext() {
+		//pass global config via context (maybe it should be stored in store but I want to see how context works)
+		return {
+			CONFIG: CONFIG
+		};
 	}
 	render() {
 		let ajaxLoader = '';
@@ -27,6 +34,10 @@ class App extends Component {
 			</div>
 		);
 	}
+};
+
+App.childContextTypes = {
+  CONFIG: React.PropTypes.object
 };
 
 export default App;

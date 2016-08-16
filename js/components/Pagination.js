@@ -1,9 +1,9 @@
 import React, { PropTypes, Component } from 'react';
 import {Link} from 'react-router';
 
-const Pagination = ({page, all, perPage, params}) => {
+const Pagination = ({videosSize}, {CONFIG}) => {
 	var pages = [];
-	var pagesCount = Math.ceil(all / perPage);
+	var pagesCount = Math.ceil(videosSize / CONFIG.perPage);
 	var show = pagesCount <= 1 ? false : true;
 
 	for(var i = 0; i < pagesCount; i++ ) {
@@ -17,5 +17,10 @@ const Pagination = ({page, all, perPage, params}) => {
 		</nav>
 	)
 };
+
+Pagination.contextTypes = {
+  CONFIG: React.PropTypes.object
+};
+
 
 export default Pagination;

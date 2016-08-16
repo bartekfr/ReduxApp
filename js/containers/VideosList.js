@@ -3,20 +3,25 @@ import List from '../components/VideosList';
 import pagination from '../components/Pagination';
 import {setPage, loadVideos}  from '../actions';
 import CONFIG  from '../const';
+import {createSelector} from 'reselect'
 
 const perPage = CONFIG.perPage;
 
-const getVideos = (videos, page) => {
-	return videos.slice(page * perPage, (page + 1) * perPage);
-};
+//Selectors
+const getVideosList = (state) => state.videosList;
+const getPage = (state, ownProps) =>  ownProps.params.page || 0;
+
+const getVideos = createSelector(
+	[ getVideosList, getPage ],
+	(videos, page) => {
+		return videos.slice(page * perPage, (page + 1) * perPage);
+	}
+);
 
 const mapStateToProps = (state, ownProps) => {
-	var currentPage = ownProps.params.page || 0;
 	return {
-		videos: getVideos(state.videosList, currentPage),
-		page: currentPage,
-		all: state.videosList.size,
-		perPage: CONFIG.perPage,
+		videos: getVideos(state, ownProps),
+		videosSize: state.videosList.size,
 		loadingStatus: state.common.get('loading')
 	}
 };
