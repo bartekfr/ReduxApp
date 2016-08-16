@@ -4,7 +4,7 @@ import {add} from '../actions';
 import { hashHistory } from 'react-router'
 import shallowCompare from 'react-addons-shallow-compare';
 
-/* 
+/*
 	Editted form values are stored in componnet state until form is submitted - redux store is updated only when user submits form
 */
 class AddVideo extends Component {
@@ -35,9 +35,10 @@ class AddVideo extends Component {
 		this.setFormData();
 	}
 	validate() {
+		//TODO: generic validation
 		var title = this.state.title;
 		this.error = title === '' ? true : false;
-		this.setState({error: this.error})
+		this.setState({error: this.error});
 	}
 	submit(e) {
 		e.preventDefault();
@@ -68,12 +69,12 @@ class AddVideo extends Component {
 				<h2>{this.props.title || 'Add new video'}</h2>
 				<form onSubmit={this.submit.bind(this)} ref="form" className={this.state.error ? 'error' : ''}>
 					<div className="row">
-						<input type="text" className="medium-6 columns" value={this.state.title} onChange={this.updateField.bind(this, 'title')} />
+						<input type="text" placeholder="Title" className="medium-6 columns" value={this.state.title} onChange={this.updateField.bind(this, 'title')} />
 					</div>
 					<div className="row">
-						<input type="text" className="medium-6 columns" value={this.state.img} onChange={this.updateField.bind(this, 'img')} />
+						<input type="text" placeholder="Image URL" className="medium-6 columns" value={this.state.img} onChange={this.updateField.bind(this, 'img')} />
 					</div>
-					<p className="error-msg">There are some error. Please correct them</p>
+					<p className="error-msg">Title is required</p>
 					<p>
 						<button ref="submit" className="button" type="submit">
 							Submit
