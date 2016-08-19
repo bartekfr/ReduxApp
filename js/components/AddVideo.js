@@ -37,13 +37,17 @@ class AddVideo extends Component {
 	validate() {
 		//TODO: generic validation
 		var title = this.state.title;
-		this.error = title === '' ? true : false;
-		this.setState({error: this.error});
+		var img = this.state.img;
+		this.errorTitle = title === '' ? true : false;
+		this.errorImg = img === '' ? true : false;
+		//setting flag because state cannot be read  immediately after updating
+		this.invalid = this.errorTitle || this.errorImg;
+		this.setState({error: this.invalid});
 	}
 	submit(e) {
 		e.preventDefault();
 		this.validate();
-		if (this.error) {
+		if (this.invalid) {
 			return false;
 		}
 		this.props.update({title: this.state.title, img: this.state.img});
@@ -74,7 +78,7 @@ class AddVideo extends Component {
 					<div className="row">
 						<input type="text" placeholder="Image URL" className="medium-6 columns" value={this.state.img} onChange={this.updateField.bind(this, 'img')} />
 					</div>
-					<p className="error-msg">Title is required</p>
+					<p className="error-msg">All fields are required</p>
 					<p>
 						<button ref="submit" className="button" type="submit">
 							Submit
