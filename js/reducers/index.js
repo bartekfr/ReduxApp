@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import Immutable, {List, Map} from 'immutable';
+import { reducer as form } from 'redux-form/immutable';
 
 //TODO: split reducers into separate files
 const video = (state = Map(), action) => {
@@ -54,6 +55,7 @@ const common = (state = Map(commonInit), action) => {
 };
 
 const videoApp = combineReducers({
+	form,
 	videosList,
 	common,
 });

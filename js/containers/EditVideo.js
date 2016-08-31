@@ -1,20 +1,33 @@
 import {connect} from 'react-redux';
 import addVideo from '../components/AddVideo';
 import {update, remove, setPage}  from '../actions';
+import {createSelector} from 'reselect'
 
-const getVideo = (videos, id) => {
-	return videos.filter((video) => {
-		return video.get('id') == id;
-	})
-};
+const getVideosList = (state) => state.videosList;
+const getId = (state, ownProps) =>  ownProps.params.id;
 
+const getVideo = createSelector(
+	[ getVideosList, getId ],
+	(videos, id) => {
+		let foundVideo;
+		videos.forEach((video) => {
+			if (video.get('id') == id) {
+				foundVideo = video;
+			}
+		});
+		if (foundVideo) {
+			return foundVideo;
+		}
+	}
+);
 
 const mapStateToProps = (state, ownProps) => {
 	let id = ownProps.params.id;
 	return {
 		title: 'Edit video data',
 		editMode: true,
-		video: getVideo(state.videosList, id)
+		id: id,
+		initialValues: getVideo(state, ownProps)
 	}
 };
 
@@ -33,9 +46,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
 const updateVideo = connect(
 	mapStateToProps,
-	mapDispatchToProps,
-	null,
-	{pure: true}
+	mapDispatchToProps
 )(addVideo);
 
 export default updateVideo;

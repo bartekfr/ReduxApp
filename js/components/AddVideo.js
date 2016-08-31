@@ -2,67 +2,36 @@ import React, { Component} from 'react';
 import {connect} from 'react-redux';
 import {add} from '../actions';
 import { hashHistory } from 'react-router'
-import shallowCompare from 'react-addons-shallow-compare';
+import { Field, reduxForm } from 'redux-form/immutable';
 
-/*
-	Editted form values are stored in componnet state until form is submitted - redux store is updated only when user submits form
-*/
+const validate = values => {
+	const errors = {}
+	if (!values.get('title')) {
+		errors.title = 'This field is required'
+	}
+	if (!values.get('img')) {
+		errors.img = 'This field is required'
+	}
+	return errors
+};
+
+const renderField = ({ input, label, type, meta: { touched, error } }) => (
+	<div>
+		<div>
+			<input {...input} placeholder={label} type={type}/>
+			{touched && error && <span className="error-msg">{error}</span>}
+		</div>
+	</div>
+);
+
 class AddVideo extends Component {
-	constructor() {
-		super();
-		this.state = {
-			title: '',
-			img: '',
-			error: false
-		}
-	}
-	setFormData() {
-		if (this.props.editMode && this.props.video.size && !this.dirty) {
-			this.video = this.props.video.toJS()[0];
-			this.setState({
-				title: this.video.title,
-				img: this.video.img
-			});
-		}
-	}
-	shouldComponentUpdate(nextProps, nextState) {
-		return shallowCompare(this, nextProps, nextState);
-	}
-	componentDidMount() {
-		this.setFormData();
-	}
-	componentDidUpdate() {
-		this.setFormData();
-	}
-	validate() {
-		//TODO: generic validation
-		var title = this.state.title;
-		var img = this.state.img;
-		this.errorTitle = title === '' ? true : false;
-		this.errorImg = img === '' ? true : false;
-		//setting flag because state cannot be read  immediately after updating
-		this.invalid = this.errorTitle || this.errorImg;
-		this.setState({error: this.invalid});
-	}
-	submit(e) {
-		e.preventDefault();
-		this.validate();
-		if (this.invalid) {
-			return false;
-		}
-		this.props.update({title: this.state.title, img: this.state.img});
+	submit(data) {
+		this.props.update({title: data.get('title'), img: data.get('img')});
 		hashHistory.push('/');
 	}
-	remove(e) {
-		e.preventDefault();
+	remove() {
 		hashHistory.push('/');
-		this.props.remove(this.video.id);
-	}
-	updateField(field, e) {
-		this.dirty = true;
-		this.setState({
-			[field]: e.target.value
-		})
+		this.props.remove(this.props.id);
 	}
 	render() {
 		if (this.props.editMode) {
@@ -71,14 +40,13 @@ class AddVideo extends Component {
 		return (
 			<div>
 				<h2>{this.props.title || 'Add new video'}</h2>
-				<form onSubmit={this.submit.bind(this)} ref="form" className={this.state.error ? 'error' : ''}>
+				<form onSubmit={this.props.handleSubmit(this.submit.bind(this))}>
 					<div className="row">
-						<input type="text" placeholder="Title" className="medium-6 columns" value={this.state.title} onChange={this.updateField.bind(this, 'title')} />
+						<Field name="title" component={renderField} type="text" label="Title"/>
 					</div>
 					<div className="row">
-						<input type="text" placeholder="Image URL" className="medium-6 columns" value={this.state.img} onChange={this.updateField.bind(this, 'img')} />
+						<Field name="img" component={renderField} type="text" label="Image URL"/>
 					</div>
-					<p className="error-msg">All fields are required</p>
 					<p>
 						<button ref="submit" className="button" type="submit">
 							Submit
@@ -90,5 +58,11 @@ class AddVideo extends Component {
 		)
 	}
 }
+
+
+AddVideo = reduxForm({
+	form: 'videoForm',
+	validate
+})(AddVideo);
 
 export default AddVideo;

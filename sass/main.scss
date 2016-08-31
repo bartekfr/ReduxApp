@@ -106,14 +106,8 @@ form {
 	}
 
 	.error-msg {
-		display: none;
-	}
-
-	&.error {
-		.error-msg {
 			display: block;
 			color: #f00;
-		}
 	}
 }
 
