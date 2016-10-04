@@ -22,6 +22,14 @@ export const update = (id, data) => {
 	}
 };
 
+export const filterCategory = (category) => {
+	return {
+		type: 'FILTER_CATEGORY',
+		category
+	}
+};
+
+
 export const setPage = (page) => {
 	return {
 		type: 'SET_PAGE',

@@ -8,8 +8,9 @@ import {createSelector} from 'reselect'
 const perPage = CONFIG.perPage;
 
 //Selectors
-const getVideosList = (state) => state.videosList;
-const getPage = (state, ownProps) =>  ownProps.params.page || 0;
+const getVideosList = (state, ownProps) => ownProps.videos;
+
+const getPage = (state, ownProps) =>  ownProps.page || 0;
 
 const getVideos = createSelector(
 	[ getVideosList, getPage ],
@@ -19,9 +20,9 @@ const getVideos = createSelector(
 );
 
 const mapStateToProps = (state, ownProps) => {
+	let videos = ownProps.videos;
 	return {
-		videos: getVideos(state, ownProps),
-		videosSize: state.videosList.size,
+		visibleVideos: getVideos(state, ownProps),
 		loadingStatus: state.common.get('loading')
 	}
 };

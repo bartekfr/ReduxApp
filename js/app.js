@@ -8,7 +8,7 @@ import thunkMiddleware from 'redux-thunk'
 
 //Components
 import App from './containers/App';
-import Videos from './containers/VideosList';
+import Videos from './containers/CategoryVideos';
 import Add from './containers/AddVideo';
 import Edit from './containers/EditVideo';
 

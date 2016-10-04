@@ -79,6 +79,18 @@ ul {
 
 	.thumbnail-holder {
 		display: block;
+		position: relative;
+
+		.category {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			background: rgba(255, 255, 255, 0.5);
+			padding: 1px 0;
+			text-align: center;
+			color: #20a208;
+		}
 	}
 
 	.title {
@@ -111,6 +123,17 @@ form {
 	}
 }
 
+.category-picker {
+	li {
+		display: inline-block;
+		padding: 3px 10px;
+		cursor: pointer;
+
+		&.active {
+			font-weight: bold;
+		}
+	}
+}
 
 /* Media queries (should be mobile first :/)
 ==================================================================== */
@@ -153,7 +176,7 @@ form {
 		}
 
 		.video-content {
-			flex: 0 1 auto;
+			flex: 1 1 auto;
 			min-width: 0;
 		}
 

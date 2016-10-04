@@ -39,6 +39,15 @@ const videosList = (state = List(), action) => {
 	}
 };
 
+const category = (state = 'all', action) => {
+	switch (action.type) {
+		case 'FILTER_CATEGORY':
+			return action.category
+		default:
+			return state;
+	}
+};
+
 let commonInit = {
   loading: false,
 };
@@ -57,6 +66,7 @@ const common = (state = Map(commonInit), action) => {
 const videoApp = combineReducers({
 	form,
 	videosList,
+	category,
 	common,
 });
 
