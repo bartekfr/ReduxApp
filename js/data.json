@@ -5,5 +5,9 @@
 	{"id": "3", "title": "Terminator 21", "img": "http://bfryzowicz.pl/img/mirror.jpg", "category": "comedy"},
 	{"id": "4", "title": "The Big bang theory", "img": "http://bfryzowicz.pl/img/flower.jpg", "category": "drama"},
 	{"id": "5", "title": "Harry Potter", "img": "http://bfryzowicz.pl/img/mirror.jpg", "category": "thriller"},
-	{"id": "6", "title": "Start Wars", "img": "http://bfryzowicz.pl/img/mirror.jpg","category": "documentary"}
+	{"id": "6", "title": "Start Wars", "img": "http://bfryzowicz.pl/img/mirror.jpg","category": "documentary"},
+	{"id": "7", "title": "You've got a message", "img": "http://bfryzowicz.pl/img/mirror.jpg", "category": "comedy"},
+	{"id": "8", "title": "Dumber", "img": "http://bfryzowicz.pl/img/mirror.jpg", "category": "comedy"},
+	{"id": "9", "title": "American Pie", "img": "http://bfryzowicz.pl/img/mirror.jpg", "category": "comedy"},
+	{"id": "10", "title": "Uncle Buckn", "img": "http://bfryzowicz.pl/img/mirror.jpg", "category": "comedy"}
 ]
