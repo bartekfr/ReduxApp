@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import {Link} from 'react-router';
 import VideosList from '../containers/VideosList';
 
-const CategoryPicker = ({filterCategory, categoryVideos, params, location}) => {
+const CategoryPicker = ({categoryVideos, params, location}) => {
 	let categories = ['all', 'comedy', 'drama', 'thriller', 'documentary'];
 	let category = params.category || 'all';
 	let page =  params.page;
