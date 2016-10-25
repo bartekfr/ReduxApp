@@ -4,18 +4,18 @@ import { filterCategory }  from '../actions';
 import { createSelector } from 'reselect'
 
 //Selectors
-const getVideos = (state) => state.videosList;
+const getAllVideos = (state) => state.videosList;
 
 const getCategory = (state, ownProps) =>  ownProps.params.category;
 
 const getFilteredVideos = createSelector(
-	[ getVideos, getCategory ],
-	(videos, category = 'all') => {
+	[ getAllVideos, getCategory ],
+	(allVideos, category = 'all') => {
 		if (category === 'all') {
-			return videos
+			return allVideos
 		}
-		return videos.filter((item) => {
-			return item.get('category') === category
+		return allVideos.filter((item) => {
+			return item.get('category') === category;
 		});
 	}
 );

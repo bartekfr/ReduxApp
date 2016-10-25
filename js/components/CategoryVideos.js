@@ -22,7 +22,7 @@ const CategoryPicker = ({categoryVideos, params, location}) => {
 					}
 				</ul>
 			</nav>
-			<VideosList videos={categoryVideos} page={page} category={category}/>
+			<VideosList categoryVideos={categoryVideos} page={page} category={category}/>
 		</div>
 	)
 };

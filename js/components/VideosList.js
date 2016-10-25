@@ -2,14 +2,14 @@ import React, {PropTypes, Component} from 'react';
 import Pagination from '../components/Pagination';
 import {Link} from 'react-router';
 
-const VideosList = ({videos, visibleVideos, category}) => {
+const VideosList = ({categoryVideos, pageVideos, category}) => {
 	let prefix = `/browse/${category}`;
 	return (
 		<section className="videos-list-page">
 			<h2>Your videos</h2>
 
 			<ul className="videos-list row">
-				{visibleVideos.map(video => {
+				{pageVideos.map(video => {
 					return (
 							<li className="medium-6 columns" key={video.get('id')}>
 								<section className="video-list-content">
@@ -27,7 +27,7 @@ const VideosList = ({videos, visibleVideos, category}) => {
 					})
 				}
 			</ul>
-			<Pagination videosSize={videos.size} prefix={prefix} />
+			<Pagination videosSize={categoryVideos.size} prefix={prefix} />
 		</section>
 	)
 };

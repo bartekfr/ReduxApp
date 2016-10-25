@@ -9,7 +9,7 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
 //Components
 import App from './containers/App';
-import Videos from './containers/CategoryVideos';
+import CategoryVideos from './containers/CategoryVideos';
 import Add from './containers/AddVideo';
 import Edit from './containers/EditVideo';
 
@@ -33,8 +33,8 @@ render(
 	<Provider store={store}>
 		<Router history={hashHistory}>
 			<Route path="/" component={App}>
-				<IndexRoute component={Videos} />
-				<Route path="/browse/:category(/:page)" component={Videos} />
+				<IndexRoute component={CategoryVideos}  />
+				<Route path="/browse/:category(/:page)" component={CategoryVideos} />
 				<Route path="add" component={Add} />
 				<Route path="edit/:id" component={Edit} />
 			</Route>

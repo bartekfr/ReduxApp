@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import addVideo from '../components/AddVideo';
-import {update, remove, setPage}  from '../actions';
+import {update, remove }  from '../actions';
 import {createSelector} from 'reselect'
 
 const getVideosList = (state) => state.videosList;
@@ -40,7 +40,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 		},
 		remove: (id) => {
 			dispatch(remove(id));
-			dispatch(setPage(0))
 		}
 	}
 };

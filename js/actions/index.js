@@ -30,14 +30,6 @@ export const filterCategory = (category) => {
 };
 
 
-export const setPage = (page) => {
-	return {
-		type: 'SET_PAGE',
-		page
-	}
-};
-
-
 export const videosLoaded = (videos) => {
 	return {
 		type: 'VIDEOS_LOADED',
