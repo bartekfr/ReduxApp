@@ -5,6 +5,7 @@ import {createStore, combineReducers, applyMiddleware} from 'redux';
 import reducers from './reducers';
 import {Router, Route, hashHistory, IndexRoute} from 'react-router';
 import thunkMiddleware from 'redux-thunk'
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
 //Components
 import App from './containers/App';
@@ -33,7 +34,7 @@ render(
 		<Router history={hashHistory}>
 			<Route path="/" component={App}>
 				<IndexRoute component={Videos} />
-				<Route path="videos/:page" component={Videos} />
+				<Route path="/browse/:category(/:page)" component={Videos} />
 				<Route path="add" component={Add} />
 				<Route path="edit/:id" component={Edit} />
 			</Route>

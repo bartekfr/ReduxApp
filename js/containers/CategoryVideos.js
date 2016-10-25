@@ -7,11 +7,11 @@ import { hashHistory } from 'react-router'
 //Selectors
 const getVideos = (state) => state.videosList;
 
-const getCategory = (state, ownProps) =>  state.category;
+const getCategory = (state, ownProps) =>  ownProps.params.category;
 
 const getFilteredVideos = createSelector(
 	[ getVideos, getCategory ],
-	(videos, category) => {
+	(videos, category = 'all') => {
 		if (category === 'all') {
 			return videos
 		}
@@ -31,10 +31,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 const mapStateToProps = (state, ownProps) => {
-	let category = state.category;
 	return {
-		categoryVideos: getFilteredVideos(state),
-		category
+		categoryVideos: getFilteredVideos(state, ownProps)
 	}
 };
 

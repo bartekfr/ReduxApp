@@ -39,35 +39,25 @@ const videosList = (state = List(), action) => {
 	}
 };
 
-const category = (state = 'all', action) => {
+let commonInit = {
+	loading: false,
+};
+
+const common = (state = Map(commonInit), action) => {
 	switch (action.type) {
-		case 'FILTER_CATEGORY':
-			return action.category
+		case 'AJAX_START':
+			return state.set('loading', true);
+		case 'AJAX_END':
+			return state.set('loading', false);
 		default:
 			return state;
 	}
 };
 
-let commonInit = {
-  loading: false,
-};
-
-const common = (state = Map(commonInit), action) => {
-  switch (action.type) {
-    case 'AJAX_START':
-      return state.set('loading', true);
-    case 'AJAX_END':
-      return state.set('loading', false);
-    default:
-      return state;
-  }
-};
-
 const videoApp = combineReducers({
 	form,
 	videosList,
-	category,
-	common,
+	common
 });
 
 export default videoApp;

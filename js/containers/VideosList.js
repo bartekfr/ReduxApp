@@ -3,7 +3,7 @@ import List from '../components/VideosList';
 import pagination from '../components/Pagination';
 import {setPage, loadVideos}  from '../actions';
 import CONFIG  from '../const';
-import {createSelector} from 'reselect'
+import { createSelector } from 'reselect';
 
 const perPage = CONFIG.perPage;
 
@@ -21,6 +21,7 @@ const getVideos = createSelector(
 
 const mapStateToProps = (state, ownProps) => {
 	let videos = ownProps.videos;
+
 	return {
 		visibleVideos: getVideos(state, ownProps),
 		loadingStatus: state.common.get('loading')
@@ -29,9 +30,6 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		onPageClick: (page) => {
-			dispatch(setPage(page));
-		},
 		loadVideos: () => {
 			dispatch(loadVideos());
 		}

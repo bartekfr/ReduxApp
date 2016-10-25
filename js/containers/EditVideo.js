@@ -23,6 +23,7 @@ const getVideo = createSelector(
 
 const mapStateToProps = (state, ownProps) => {
 	let id = ownProps.params.id;
+
 	return {
 		title: 'Edit video data',
 		editMode: true,

@@ -2,7 +2,8 @@ import React, {PropTypes, Component} from 'react';
 import Pagination from '../components/Pagination';
 import {Link} from 'react-router';
 
-const VideosList = ({videos, visibleVideos, ...paginationProps}) => {
+const VideosList = ({videos, visibleVideos, category}) => {
+	let prefix = `/browse/${category}`;
 	return (
 		<section className="videos-list-page">
 			<h2>Your videos</h2>
@@ -26,7 +27,7 @@ const VideosList = ({videos, visibleVideos, ...paginationProps}) => {
 					})
 				}
 			</ul>
-			<Pagination videosSize={videos.size} />
+			<Pagination videosSize={videos.size} prefix={prefix} />
 		</section>
 	)
 };
