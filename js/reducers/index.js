@@ -58,10 +58,16 @@ const common = (state = Map(commonInit), action) => {
 	}
 };
 
+const categories = (state = List(['comedy', 'drama', 'thriller', 'documentary']), action) => {
+	//TODO: categories list modifications
+	return state;
+};
+
 const videoApp = combineReducers({
 	form,
 	videosList,
-	common
+	common,
+	categories
 });
 
 export default videoApp;

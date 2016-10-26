@@ -14,6 +14,7 @@ const getPage = (state, ownProps) =>  ownProps.params.page;
 const getPageVideos = createSelector(
 	[ getCategoryVideos, getPage ],
 	(videos, page = 0) => {
+		page = parseInt(page);
 		return videos.slice(page * perPage, (page + 1) * perPage);
 	}
 );

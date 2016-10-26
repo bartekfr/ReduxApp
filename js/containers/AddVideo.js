@@ -12,8 +12,14 @@ const mapDispatchToProps = (dispatch) => {
 	}
 };
 
+const mapStateToProps = (state, ownProps) => {
+	return {
+		categories: state.categories
+	}
+};
+
 const AddVideo = connect(
-	null,
+	mapStateToProps,
 	mapDispatchToProps
 )(addVideo);
 

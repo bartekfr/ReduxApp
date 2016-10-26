@@ -2,14 +2,14 @@ import React, { PropTypes, Component } from 'react';
 import {Link} from 'react-router';
 import VideosList from '../containers/VideosList';
 
-const CategoryPicker = ({categoryVideos}) => {
-	let categories = ['all', 'comedy', 'drama', 'thriller', 'documentary'];
+const CategoryPicker = ({categoryVideos, categories}) => {
+	const categoriesList = ['all', ...categories.toJS()];
 
 	return (
 		<div>
 			<nav>
 				<ul className="category-picker" >
-					{categories.map((v) => {
+					{categoriesList.map((v) => {
 							return (
 								<li key={v}>
 									<Link activeClassName='active' to={'/browse/' + v}>{v}</Link>

@@ -28,6 +28,23 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
 	</div>
 );
 
+const renderFieldSelect = ({ input, categories, label, type, meta: { touched, error } }) => (
+	<div>
+		<div>
+			<select {...input}>
+				<option>Select category</option>
+				{categories.toJS().map((category) => {
+					return (
+							<option key={category} value={category}>{category}</option>
+						)
+					})
+				}
+			</select>
+			{touched && error && <span className="error-msg">{error}</span>}
+		</div>
+	</div>
+);
+
 class AddVideo extends Component {
 	submit(data) {
 		this.props.update({title: data.get('title'), img: data.get('img'), category: data.get('category')});
@@ -52,7 +69,7 @@ class AddVideo extends Component {
 						<Field name="img" component={renderField} type="text" label="Image URL"/>
 					</div>
 					<div className="row">
-						<Field name="category" component={renderField} type="text" label="Category"/>
+						<Field name="category" component={renderFieldSelect} categories={this.props.categories} type="text" label="Category"/>
 					</div>
 					<p>
 						<button ref="submit" className="button" type="submit">

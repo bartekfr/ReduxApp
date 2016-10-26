@@ -22,7 +22,8 @@ const getFilteredVideos = createSelector(
 
 const mapStateToProps = (state, ownProps) => {
 	return {
-		categoryVideos: getFilteredVideos(state, ownProps)
+		categoryVideos: getFilteredVideos(state, ownProps),
+		categories: state.categories
 	}
 };
 

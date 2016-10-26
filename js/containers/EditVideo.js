@@ -28,7 +28,8 @@ const mapStateToProps = (state, ownProps) => {
 		title: 'Edit video data',
 		editMode: true,
 		id: id,
-		initialValues: getVideo(state, ownProps)
+		initialValues: getVideo(state, ownProps),
+		categories: state.categories
 	}
 };
 
