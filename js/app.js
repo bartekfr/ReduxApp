@@ -34,7 +34,9 @@ render(
 		<Router history={hashHistory}>
 			<Route path="/" component={App}>
 				<IndexRoute component={CategoryVideos}  />
-				<Route path="/browse/:category(/:page)" component={CategoryVideos} />
+				<Route path="/browse/:category" component={CategoryVideos} >
+					<Route path=":page" component={CategoryVideos} />
+				</Route>
 				<Route path="add" component={Add} />
 				<Route path="edit/:id" component={Edit} />
 			</Route>

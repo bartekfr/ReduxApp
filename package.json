@@ -8,7 +8,8 @@
   "main": "",
   "author": "Bartlomiej Fryzowicz",
   "license": "ISC",
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
     "babel-core": "6.5.2",
     "babel-loader": "6.2.3",
     "babel-plugin-transform-object-rest-spread": "6.6.5",
@@ -26,8 +27,9 @@
     "react": "15.1.0",
     "react-addons-shallow-compare": "15.1.0",
     "react-dom": "15.1.0",
-    "react-router": "2.4.1",
-    "react-router-redux": "4.0.2",
+    "react-redux": "4.4.2",
+    "react-router": "3.0.0",
+    "react-router-redux": "4.0.6",
     "redux": "3.4.0",
     "redux-form": "6.0.1",
     "redux-thunk": "2.0.1",
@@ -38,9 +40,5 @@
     "underscore": "1.8.3",
     "webpack": "1.12.14",
     "webpack-dev-server": "1.14.1"
-  },
-  "dependencies": {
-    "react-redux": "4.4.2",
-    "react-router-redux": "4.0.6"
   }
 }

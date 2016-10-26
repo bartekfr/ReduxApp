@@ -27,7 +27,7 @@ class App extends Component {
 				</div>
 				<nav className="panel-footer">
 					<ul className="menu">
-						<li><Link activeClassName="active" to={'/'}>Home</Link></li>
+						<li><Link to={'/'}>Home</Link></li>
 						<li><Link to={'/add'}>Add new video</Link></li>
 					</ul>
 				</nav>

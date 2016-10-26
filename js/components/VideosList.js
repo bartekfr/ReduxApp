@@ -2,7 +2,7 @@ import React, {PropTypes, Component} from 'react';
 import Pagination from '../components/Pagination';
 import {Link} from 'react-router';
 
-const VideosList = ({categoryVideos, pageVideos, category}) => {
+const VideosList = ({categoryVideos, pageVideos, category = 'all'}) => {
 	let prefix = `/browse/${category}`;
 	return (
 		<section className="videos-list-page">

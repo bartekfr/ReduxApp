@@ -2,19 +2,16 @@ import React, { PropTypes, Component } from 'react';
 import {Link} from 'react-router';
 import VideosList from '../containers/VideosList';
 
-const CategoryPicker = ({categoryVideos, params, location}) => {
+const CategoryPicker = ({categoryVideos}) => {
 	let categories = ['all', 'comedy', 'drama', 'thriller', 'documentary'];
-	let category = params.category || 'all';
-	let page =  params.page;
 
 	return (
 		<div>
 			<nav>
 				<ul className="category-picker" >
 					{categories.map((v) => {
-							let className = v === category ? 'active' : '';
 							return (
-								<li key={v} className={className}>
+								<li key={v}>
 									<Link activeClassName='active' to={'/browse/' + v}>{v}</Link>
 								</li>
 							)
@@ -22,7 +19,7 @@ const CategoryPicker = ({categoryVideos, params, location}) => {
 					}
 				</ul>
 			</nav>
-			<VideosList categoryVideos={categoryVideos} page={page} category={category}/>
+			<VideosList categoryVideos={categoryVideos} />
 		</div>
 	)
 };

@@ -34,6 +34,10 @@ ul {
 	list-style-type: none;
 }
 
+a.active {
+	font-weight: bold;
+}
+
 .button {
 	margin-right: 10px;
 }
@@ -128,10 +132,6 @@ form {
 		display: inline-block;
 		padding: 3px 10px;
 		cursor: pointer;
-
-		&.active {
-			font-weight: bold;
-		}
 	}
 }
 
