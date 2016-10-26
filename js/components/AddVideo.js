@@ -5,12 +5,16 @@ import { hashHistory } from 'react-router'
 import { Field, reduxForm } from 'redux-form/immutable';
 
 const validate = values => {
-	const errors = {}
+	const errors = {};
+
 	if (!values.get('title')) {
-		errors.title = 'This field is required'
+		errors.title = 'Title is required';
 	}
 	if (!values.get('img')) {
-		errors.img = 'This field is required'
+		errors.img = 'Image url is required';
+	}
+	if (!values.get('category')) {
+		errors.category = 'Category is required';
 	}
 	return errors
 };
@@ -26,7 +30,7 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
 
 class AddVideo extends Component {
 	submit(data) {
-		this.props.update({title: data.get('title'), img: data.get('img')});
+		this.props.update({title: data.get('title'), img: data.get('img'), category: data.get('category')});
 		hashHistory.push('/');
 	}
 	remove() {
@@ -46,6 +50,9 @@ class AddVideo extends Component {
 					</div>
 					<div className="row">
 						<Field name="img" component={renderField} type="text" label="Image URL"/>
+					</div>
+					<div className="row">
+						<Field name="category" component={renderField} type="text" label="Category"/>
 					</div>
 					<p>
 						<button ref="submit" className="button" type="submit">

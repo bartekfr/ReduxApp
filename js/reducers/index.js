@@ -9,11 +9,15 @@ const video = (state = Map(), action) => {
 			return Map({
 				id: action.data.id,
 				title: action.data.title,
-				img: action.data.img
+				img: action.data.img,
+				category: action.data.category
 			});
 		case 'UPDATE':
 			if(state.get('id') === action.id){
-				return state.set('title', action.data.title).set('img', action.data.img)
+				return state
+					.set('title', action.data.title)
+					.set('img', action.data.img)
+					.set('category', action.data.category)
 			}
 			return state;
 		default:

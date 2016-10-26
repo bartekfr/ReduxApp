@@ -7,7 +7,7 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		update: (data) => {
 			data.id = shortid.generate();
-			dispatch(add(data))
+			dispatch(add(data));
 		}
 	}
 };
