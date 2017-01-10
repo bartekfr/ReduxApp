@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import Immutable, {List, Map} from 'immutable';
 import { reducer as form } from 'redux-form/immutable';
+import shortid from 'shortid';
 
 //TODO: split reducers into separate files
+
 const video = (state = Map(), action) => {
 	switch (action.type) {
 		case 'ADD_VIDEO':
@@ -25,10 +27,10 @@ const video = (state = Map(), action) => {
 	}
 };
 
-const videosList = (state = List(), action) => {
+const videosById = (state = Map(), action) => {
 	switch (action.type) {
 		case 'ADD_VIDEO':
-			return state.push(video(undefined, action));
+			return state.set(action.data.id, video(undefined, action));
 		case 'UPDATE':
 			return state.map((item) => video(item, action));
 		case 'REMOVE':
@@ -38,6 +40,22 @@ const videosList = (state = List(), action) => {
 			});
 		case 'VIDEOS_LOADED':
 			return state.merge(action.videos);
+		default:
+			return state;
+	}
+};
+
+const videosIds = (state = List(), action) => {
+	switch (action.type) {
+		case 'ADD_VIDEO':
+			return state.push(action.data.id);
+		case 'REMOVE':
+			return state.filter((id) => {
+				return action.id != id
+			});
+		case 'VIDEOS_LOADED':
+			let ids  = Object.keys(action.videos);
+			return state.merge(ids);
 		default:
 			return state;
 	}
@@ -58,16 +76,41 @@ const common = (state = Map(commonInit), action) => {
 	}
 };
 
-const categories = (state = List(['comedy', 'drama', 'thriller', 'documentary']), action) => {
+
+let categoriesInit = {
+	"1": {id: 1, name: 'comedy'},
+	"2": {id: 2, name: 'drama'},
+	"3": {id: 3, name: 'thriller'},
+	"4": {id: 4, name: 'documentary'}
+};
+
+const categoriesById = (state = Map(categoriesInit), action) => {
 	//TODO: categories list modifications
 	return state;
 };
 
+
+//selectors
+export const getAllCategories = (state) => {
+	let categoriesList = [];;
+	state.categoriesById.map((category) => {
+		categoriesList.push(category);
+	});
+	return categoriesList;
+}
+
+export const getAllVideos = (state) => {
+	return state.videosIds.map(id => {
+		return state.videosById.get(id);
+	});
+}
+
 const videoApp = combineReducers({
 	form,
-	videosList,
+	videosById,
+	videosIds,
 	common,
-	categories
+	categoriesById
 });
 
 export default videoApp;

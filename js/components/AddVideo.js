@@ -33,9 +33,9 @@ const renderFieldSelect = ({ input, categories, label, type, meta: { touched, er
 		<div>
 			<select {...input}>
 				<option>Select category</option>
-				{categories.toJS().map((category) => {
+				{categories.map((category) => {
 					return (
-							<option key={category} value={category}>{category}</option>
+							<option key={category.id} value={category.id}>{category.name}</option>
 						)
 					})
 				}

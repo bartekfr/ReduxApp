@@ -1,13 +1,13 @@
 import {connect} from 'react-redux';
 import addVideo from '../components/AddVideo';
 import {update, remove }  from '../actions';
+import { getAllVideos, getAllCategories } from '../reducers';
 import {createSelector} from 'reselect'
 
-const getVideosList = (state) => state.videosList;
 const getId = (state, ownProps) =>  ownProps.params.id;
 
 const getVideo = createSelector(
-	[ getVideosList, getId ],
+	[ getAllVideos, getId ],
 	(videos, id) => {
 		let foundVideo;
 		videos.forEach((video) => {
@@ -29,7 +29,7 @@ const mapStateToProps = (state, ownProps) => {
 		editMode: true,
 		id: id,
 		initialValues: getVideo(state, ownProps),
-		categories: state.categories
+		categories: getAllCategories(state)
 	}
 };
 

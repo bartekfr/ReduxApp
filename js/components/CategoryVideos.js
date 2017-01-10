@@ -1,18 +1,21 @@
 import React, { PropTypes, Component } from 'react';
 import {Link} from 'react-router';
 import VideosList from '../containers/VideosList';
+import shortid from 'shortid';
 
 const CategoryPicker = ({categoryVideos, categories}) => {
-	const categoriesList = ['all', ...categories.toJS()];
 
 	return (
 		<div>
 			<nav>
 				<ul className="category-picker" >
-					{categoriesList.map((v) => {
+					<li key={shortid.generate()}>
+						<Link activeClassName='active' to='/browse/all'>all</Link>
+					</li>
+					{categories.map((v) => {
 							return (
-								<li key={v}>
-									<Link activeClassName='active' to={'/browse/' + v}>{v}</Link>
+								<li key={v.id}>
+									<Link activeClassName='active' to={'/browse/' + v.id}>{v.name}</Link>
 								</li>
 							)
 						})

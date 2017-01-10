@@ -23,7 +23,8 @@ const mapStateToProps = (state, ownProps) => {
 	let params = ownProps.params;
 	return {
 		pageVideos: getPageVideos(state, ownProps),
-		category: params.category
+		category: params.category || 'all',
+		categoriesById: state.categoriesById
 	}
 };
 

@@ -1,13 +1,13 @@
-[
-	{"id": "0", "title": "The very very long story to be told soon", "img": "http://bfryzowicz.pl/img/mirror.jpg", "category": "comedy"},
-	{"id": "1", "title": "Hobbit", "img": "http://bfryzowicz.pl/img/flower.jpg", "category": "comedy"},
-	{"id": "2", "title": "Lord of the rings", "img": "http://bfryzowicz.pl/img/korony.jpg", "category": "documentary"},
-	{"id": "3", "title": "Terminator 21", "img": "http://bfryzowicz.pl/img/mirror.jpg", "category": "comedy"},
-	{"id": "4", "title": "The Big bang theory", "img": "http://bfryzowicz.pl/img/flower.jpg", "category": "drama"},
-	{"id": "5", "title": "Harry Potter", "img": "http://bfryzowicz.pl/img/mirror.jpg", "category": "thriller"},
-	{"id": "6", "title": "Start Wars", "img": "http://bfryzowicz.pl/img/mirror.jpg","category": "documentary"},
-	{"id": "7", "title": "You've got a message", "img": "http://bfryzowicz.pl/img/mirror.jpg", "category": "comedy"},
-	{"id": "8", "title": "Dumber", "img": "http://bfryzowicz.pl/img/mirror.jpg", "category": "comedy"},
-	{"id": "9", "title": "American Pie", "img": "http://bfryzowicz.pl/img/mirror.jpg", "category": "comedy"},
-	{"id": "10", "title": "Uncle Buck", "img": "http://bfryzowicz.pl/img/mirror.jpg", "category": "comedy"}
-]
+{
+	"0": {"id": "0", "title": "The very very long story to be told soon", "img": "http://bfryzowicz.pl/img/mirror.jpg", "category": "1"},
+	"1": {"id": "1", "title": "Hobbit", "img": "http://bfryzowicz.pl/img/flower.jpg", "category": "1"},
+	"2": {"id": "2", "title": "Lord of the rings", "img": "http://bfryzowicz.pl/img/korony.jpg", "category": "4"},
+	"3": {"id": "3", "title": "Terminator 21", "img": "http://bfryzowicz.pl/img/mirror.jpg", "category": "1"},
+	"4": {"id": "4", "title": "The Big bang theory", "img": "http://bfryzowicz.pl/img/flower.jpg", "category": "2"},
+	"5": {"id": "5", "title": "Harry Potter", "img": "http://bfryzowicz.pl/img/mirror.jpg", "category": "3"},
+	"6": {"id": "6", "title": "Start Wars", "img": "http://bfryzowicz.pl/img/mirror.jpg","category": "4"},
+	"7": {"id": "7", "title": "You've got a message", "img": "http://bfryzowicz.pl/img/mirror.jpg", "category": "1"},
+	"8": {"id": "8", "title": "Dumber", "img": "http://bfryzowicz.pl/img/mirror.jpg", "category": "1"},
+	"9": {"id": "9", "title": "American Pie", "img": "http://bfryzowicz.pl/img/mirror.jpg", "category": "1"},
+	"10": {"id": "10", "title": "Uncle Buck", "img": "http://bfryzowicz.pl/img/mirror.jpg", "category": "1"}
+}

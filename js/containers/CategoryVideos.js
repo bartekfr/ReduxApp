@@ -1,11 +1,10 @@
 import {connect} from 'react-redux';
 import categoryVideos from '../components/CategoryVideos';
 import { filterCategory }  from '../actions';
+import { getAllVideos, getAllCategories } from '../reducers';
 import { createSelector } from 'reselect'
 
 //Selectors
-const getAllVideos = (state) => state.videosList;
-
 const getCategory = (state, ownProps) =>  ownProps.params.category;
 
 const getFilteredVideos = createSelector(
@@ -23,7 +22,7 @@ const getFilteredVideos = createSelector(
 const mapStateToProps = (state, ownProps) => {
 	return {
 		categoryVideos: getFilteredVideos(state, ownProps),
-		categories: state.categories
+		categories: getAllCategories(state)
 	}
 };
 

@@ -2,20 +2,23 @@ import React, {PropTypes, Component} from 'react';
 import Pagination from '../components/Pagination';
 import {Link} from 'react-router';
 
-const VideosList = ({categoryVideos, pageVideos, category = 'all'}) => {
-	let prefix = `/browse/${category}`;
+const VideosList = ({categoryVideos, pageVideos, category, categoriesById}) => {
+	let urlPrefix = `/browse/${category}`;
 	return (
 		<section className="videos-list-page">
 			<h2>Your videos</h2>
 
 			<ul className="videos-list row">
 				{pageVideos.map(video => {
+					let categoryId = video.get('category');
+					let categoryName = categoriesById.get(categoryId).name;
+
 					return (
 							<li className="medium-6 columns" key={video.get('id')}>
 								<section className="video-list-content">
 									<span className="thumbnail-holder" href="#" data-src={video.get('img')}>
 										<img className='img-responsive' src={video.get('img')} />
-										<span className="category">{video.get('category')}</span>
+										<span className="category">{categoryName}</span>
 									</span>
 									<div className="video-content">
 										<h3 className="title">{video.get('title')}</h3>
@@ -27,7 +30,7 @@ const VideosList = ({categoryVideos, pageVideos, category = 'all'}) => {
 					})
 				}
 			</ul>
-			<Pagination videosSize={categoryVideos.size} prefix={prefix} />
+			<Pagination videosSize={categoryVideos.size} urlPrefix={urlPrefix} />
 		</section>
 	)
 };

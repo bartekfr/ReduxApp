@@ -2,6 +2,7 @@ import {connect} from 'react-redux';
 import addVideo from '../components/AddVideo';
 import {add}  from '../actions';
 import shortid from 'shortid';
+import { getAllCategories } from '../reducers';
 
 const mapDispatchToProps = (dispatch) => {
 	return {
@@ -14,7 +15,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state, ownProps) => {
 	return {
-		categories: state.categories
+		categories: getAllCategories(state)
 	}
 };
 
