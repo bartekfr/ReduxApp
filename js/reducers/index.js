@@ -92,11 +92,7 @@ const categoriesById = (state = Map(categoriesInit), action) => {
 
 //selectors
 export const getAllCategories = (state) => {
-	let categoriesList = [];;
-	state.categoriesById.map((category) => {
-		categoriesList.push(category);
-	});
-	return categoriesList;
+	return state.categoriesById.toArray();
 }
 
 export const getAllVideos = (state) => {
