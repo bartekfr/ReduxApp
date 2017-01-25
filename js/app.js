@@ -14,12 +14,12 @@ import Edit from './containers/EditVideo';
 
 import css from "../sass/main.scss";
 
-//import foundation components
-import 'foundation-sites/js/foundation.core.js';
-import 'foundation-sites/js/foundation.util.mediaQuery.js';
-import 'foundation-sites/js/foundation.util.triggers.js';
-import 'foundation-sites/js/foundation.util.motion.js';
-import 'foundation-sites/js/foundation.offcanvas.js';
+//import foundation components;
+import { foundation } from 'foundation-sites/js/foundation.core';
+import 'foundation-sites/js/foundation.util.mediaQuery';
+import 'foundation-sites/js/foundation.util.triggers';
+import 'foundation-sites/js/foundation.util.motion';
+import 'foundation-sites/js/foundation.offcanvas';
 
 
 const store = createStore(
@@ -44,4 +44,5 @@ render(
 	document.getElementById('root')
 );
 
+$.fn.foundation = foundation;
 $(document).foundation();

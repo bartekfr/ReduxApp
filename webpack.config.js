@@ -24,10 +24,18 @@ module.exports =  {
 			'style',
 			'css!sass'
 			)
+		}, {
+			test: /(foundation\.core)/,
+			loader: 'exports?foundation=jQuery.fn.foundation'
 		}]
 	},
 	plugins: [
-		new ExtractTextPlugin('bundle.css')
+		new ExtractTextPlugin('bundle.css'),
+		new webpack.ProvidePlugin({
+				$: "jquery",
+				jQuery: "jquery",
+				"window.jQuery": "jquery"
+		})
 	],
 	sassLoader: {
 		outputStyle: 'compressed',
