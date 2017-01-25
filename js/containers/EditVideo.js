@@ -37,7 +37,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 	let id = ownProps.routeParams.id;
 	return {
 		update: (data) => {
-			dispatch(update(id, data))
+			data.id = id;
+			dispatch(update(data))
 		},
 		remove: (id) => {
 			dispatch(remove(id));

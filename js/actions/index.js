@@ -1,9 +1,11 @@
 import fetch from 'isomorphic-fetch'
+import { normalize } from 'normalizr';
+import { video, arrayOfVideos } from './schema';
 
 export const add = (data) => {
 	return {
 		type: 'ADD_VIDEO',
-		data
+		data: normalize(data, video)
 	}
 };
 
@@ -14,11 +16,10 @@ export const remove = (id) => {
 	}
 };
 
-export const update = (id, data) => {
+export const update = (data) => {
 	return {
 		type: 'UPDATE',
-		id,
-		data
+		data: normalize(data, video)
 	}
 };
 
@@ -29,11 +30,10 @@ export const filterCategory = (category) => {
 	}
 };
 
-
 export const videosLoaded = (videos) => {
 	return {
 		type: 'VIDEOS_LOADED',
-		videos
+		data: normalize(videos, arrayOfVideos)
 	}
 };
 

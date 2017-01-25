@@ -5,7 +5,6 @@ import {createStore, combineReducers, applyMiddleware} from 'redux';
 import reducers from './reducers';
 import {Router, Route, hashHistory, IndexRoute} from 'react-router';
 import thunkMiddleware from 'redux-thunk'
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
 //Components
 import App from './containers/App';

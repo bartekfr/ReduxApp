@@ -10,9 +10,7 @@ const validate = values => {
 	if (!values.get('title')) {
 		errors.title = 'Title is required';
 	}
-	if (!values.get('img')) {
-		errors.img = 'Image url is required';
-	}
+
 	if (!values.get('category')) {
 		errors.category = 'Category is required';
 	}
