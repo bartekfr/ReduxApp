@@ -1,17 +1,14 @@
 import React from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
-import {createStore, combineReducers, applyMiddleware} from 'redux';
 import reducers from './reducers';
 import {Router, Route, hashHistory, IndexRoute} from 'react-router';
-import thunkMiddleware from 'redux-thunk'
 
 //Components
 import App from './containers/App';
 import CategoryVideos from './containers/CategoryVideos';
 import Add from './containers/AddVideo';
 import Edit from './containers/EditVideo';
-
 import css from "../sass/main.scss";
 
 //import foundation components;
@@ -21,12 +18,7 @@ import 'foundation-sites/js/foundation.util.triggers';
 import 'foundation-sites/js/foundation.util.motion';
 import 'foundation-sites/js/foundation.offcanvas';
 
-
-const store = createStore(
-	reducers,
-	{},
-	applyMiddleware(thunkMiddleware)
-);
+import store from './store';
 
 render(
 	<Provider store={store}>

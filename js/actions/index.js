@@ -38,16 +38,8 @@ export const videosLoaded = (videos) => {
 };
 
 export const videosLoad = () => {
-	return dispatch => {
-		dispatch(ajaxStart());
-
-		return fetch('/js/data.json')
-			.then(response => response.json())
-			.then(json => {
-				dispatch(videosLoaded(json));
-				dispatch(ajaxEnd())
-			})
-			.catch(err =>  dispatch(ajaxError(err)));
+	return {
+		type: 'VIDEOS_LOAD'
 	}
 };
 
