@@ -1,6 +1,10 @@
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var webpack = require('webpack');
 
+const extractSass = new ExtractTextPlugin({
+	filename: "bundle.css",
+});
+
 module.exports =  {
 	entry: ['babel-polyfill', __dirname + "/js/app.js"],
 	output: {
@@ -10,8 +14,8 @@ module.exports =  {
 	},
 	devtool: '#source-map',
 	module: {
-		loaders: [{
-			loader: 'babel',
+		rules: [{
+			loader: 'babel-loader',
 			exclude: /node_modules/,
 			test: /\.js/,
 			query: {
@@ -20,25 +24,28 @@ module.exports =  {
 			}
 		}, {
 			test: /\.scss$/,
-			loader: ExtractTextPlugin.extract(
-			'style',
-			'css!sass'
-			)
-		}, {
+			loader: extractSass.extract({
+				loader: [{
+					loader: "css-loader"
+				}, {
+					loader: "sass-loader",
+					options:{
+						outputStyle: 'compressed',
+					includePaths: ['node_modules/foundation-sites/scss']
+					}
+				}]
+			})
+			},{
 			test: /(foundation\.core)/,
-			loader: 'exports?foundation=jQuery.fn.foundation'
+			use: 'exports-loader?foundation=jQuery.fn.foundation'
 		}]
 	},
 	plugins: [
-		new ExtractTextPlugin('bundle.css'),
+		extractSass,
 		new webpack.ProvidePlugin({
 				$: "jquery",
 				jQuery: "jquery",
 				"window.jQuery": "jquery"
 		})
-	],
-	sassLoader: {
-		outputStyle: 'compressed',
-		includePaths: ['node_modules/foundation-sites/scss']
-	}
-}
+	]
+};
