@@ -9,15 +9,7 @@ const getId = (state, ownProps) =>  ownProps.params.id;
 const getVideo = createSelector(
 	[ getAllVideos, getId ],
 	(videos, id) => {
-		let foundVideo;
-		videos.forEach((video) => {
-			if (video.get('id') == id) {
-				foundVideo = video;
-			}
-		});
-		if (foundVideo) {
-			return foundVideo;
-		}
+		return videos.find((video) => video.get('id') == id);
 	}
 );
 
