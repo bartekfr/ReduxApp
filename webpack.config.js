@@ -1,27 +1,38 @@
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var webpack = require('webpack');
+const { resolve } = require('path');
 
 const extractSass = new ExtractTextPlugin({
 	filename: "bundle.css",
 });
 
 module.exports =  {
-	entry: ['babel-polyfill', __dirname + "/js/app.js"],
+	entry: [
+		'react-hot-loader/patch',
+		'webpack/hot/only-dev-server',
+		'babel-polyfill', __dirname + "/js/app.js"
+	],
 	output: {
 		path: __dirname + '/dist',
 		filename: "bundle.js",
 		publicPath: '/dist'
 	},
 	devtool: '#source-map',
+	devServer: {
+		hot: true,
+		publicPath: '/dist'
+	},
 	module: {
 		rules: [{
-			loader: 'babel-loader',
 			exclude: /node_modules/,
 			test: /\.js/,
-			query: {
-				presets: ['es2015', 'react'],
-				plugins: ["transform-object-rest-spread"]
-			}
+			use: [{
+				loader: 'babel-loader',
+				options: {
+					presets: [['es2015', {modules: false}], "stage-2", "react"],
+					plugins: ["react-hot-loader/babel"]
+				}
+			}]
 		}, {
 			test: /\.scss$/,
 			loader: extractSass.extract({
@@ -46,6 +57,8 @@ module.exports =  {
 				$: "jquery",
 				jQuery: "jquery",
 				"window.jQuery": "jquery"
-		})
+		}),
+		new webpack.HotModuleReplacementPlugin(),
+		new webpack.NamedModulesPlugin(),
 	]
 };
