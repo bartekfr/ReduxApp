@@ -12,7 +12,7 @@ import 'foundation-sites/js/foundation.util.triggers';
 import 'foundation-sites/js/foundation.util.motion';
 import 'foundation-sites/js/foundation.offcanvas';
 
-import routes from './components/routes';
+import routes from './components/Routes';
 import store from './store';
 
 import { AppContainer } from 'react-hot-loader';
@@ -52,7 +52,7 @@ if (module.hot) {
 		}
 	};
 
-	module.hot.accept('./components/routes', () => {
+	module.hot.accept('./components/Routes', () => {
 		renderApp(routes);
 	});
 }
