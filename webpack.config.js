@@ -22,6 +22,11 @@ module.exports =  {
 		hot: true,
 		publicPath: '/dist'
 	},
+	externals: {
+		'react/addons': true,
+		'react/lib/ExecutionEnvironment': true,
+		'react/lib/ReactContext': true
+	},
 	module: {
 		rules: [{
 			exclude: /node_modules/,
@@ -35,8 +40,8 @@ module.exports =  {
 			}]
 		}, {
 			test: /\.scss$/,
-			loader: extractSass.extract({
-				loader: [{
+			use: extractSass.extract({
+				use: [{
 					loader: "css-loader"
 				}, {
 					loader: "sass-loader",

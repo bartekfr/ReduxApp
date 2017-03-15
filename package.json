@@ -3,14 +3,22 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "node_modules/.bin/webpack-dev-server"
+    "start": "node_modules/.bin/webpack-dev-server",
+    "test": "karma start"
   },
-  "main": "",
   "author": "Bartlomiej Fryzowicz",
   "license": "ISC",
   "devDependencies": {
-    "install": "^0.8.7",
-    "npm": "^4.2.0"
+    "enzyme": "^2.7.1",
+    "jasmine-core": "^2.5.2",
+    "karma": "^0.13.19",
+    "karma-babel-preprocessor": "^6.0.1",
+    "karma-jasmine": "^0.3.7",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-spec-reporter": "0.0.30",
+    "karma-webpack": "^2.0.3",
+    "react-addons-test-utils": "^15.4.2"
   },
   "dependencies": {
     "babel-core": "6.23.1",
