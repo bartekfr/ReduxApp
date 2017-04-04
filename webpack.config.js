@@ -47,7 +47,7 @@ module.exports =  {
 					loader: "sass-loader",
 					options:{
 						outputStyle: 'compressed',
-					includePaths: ['node_modules/foundation-sites/scss']
+						includePaths: ['node_modules/foundation-sites/scss']
 					}
 				}]
 			})
