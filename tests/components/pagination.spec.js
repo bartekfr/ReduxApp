@@ -17,8 +17,8 @@ describe('Pagination', function() {
 	});
 
 	it('renders correctly', function() {
-		expect(component.hasClass('pagination-wrapper')).toBe(true);
-		expect(component.find('li').length).toBe(2)
+		expect(component.hasClass('pagination-wrapper')).to.be.equal(true);
+		expect(component.find('li').length).to.be.equal(2)
 	});
 
 });

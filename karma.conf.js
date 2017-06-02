@@ -10,12 +10,13 @@ module.exports = function(config) {
 			'karma-phantomjs-launcher',
 			'karma-sourcemap-loader',
 			"karma-spec-reporter",
-			"karma-jasmine",
-			"karma-chrome-launcher",
+			"karma-mocha",
+			"karma-sinon",
+			"karma-chai",
 			"karma-webpack"
 		],
 		// frameworks to use
-		frameworks: ['jasmine'],
+		frameworks: ['mocha', 'sinon', 'chai'],
 		webpack: webpackConfig,
 		// list of files / patterns to load in the browser
 		files: [
