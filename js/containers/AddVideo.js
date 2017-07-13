@@ -1,6 +1,6 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import addVideo from '../components/AddVideo';
-import {add}  from '../actions';
+import { add }  from '../actions';
 import shortid from 'shortid';
 import { getAllCategories } from '../reducers';
 

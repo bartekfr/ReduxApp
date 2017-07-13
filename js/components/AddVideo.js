@@ -43,7 +43,7 @@ const renderFieldSelect = ({ input, categories, label, type, meta: { touched, er
 	</div>
 );
 
-class AddVideo extends Component {
+export class AddVideo extends Component {
 	submit(data) {
 		this.props.update({title: data.get('title'), img: data.get('img'), category: data.get('category')});
 		hashHistory.push('/');
@@ -82,9 +82,9 @@ class AddVideo extends Component {
 }
 
 
-AddVideo = reduxForm({
+let AddVideoDecorated = reduxForm({
 	form: 'videoForm',
 	validate
 })(AddVideo);
 
-export default AddVideo;
+export default AddVideoDecorated;
