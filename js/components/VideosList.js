@@ -2,8 +2,8 @@ import React, {PropTypes, Component} from 'react';
 import Pagination from '../components/Pagination';
 import {Link} from 'react-router';
 
-const VideosList = ({categoryVideos, pageVideos, category, categoriesById}) => {
-	let urlPrefix = `/browse/${category}`;
+const VideosList = ({pageVideos, currentCategory, allCategoryVideosSize, categoriesById}) => {
+	let urlPrefix = `/browse/${currentCategory}`;
 	return (
 		<section className="videos-list-page">
 			<h2>Your videos</h2>
@@ -30,7 +30,7 @@ const VideosList = ({categoryVideos, pageVideos, category, categoriesById}) => {
 					})
 				}
 			</ul>
-			<Pagination videosSize={categoryVideos.size} urlPrefix={urlPrefix} />
+			<Pagination videosSize={allCategoryVideosSize} urlPrefix={urlPrefix} />
 		</section>
 	)
 };

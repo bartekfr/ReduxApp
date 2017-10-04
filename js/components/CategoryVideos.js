@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import VideosList from '../containers/VideosList';
 import shortid from 'shortid';
 
-const CategoryPicker = ({categoryVideos, categories}) => {
+const CategoryPicker = ({categories}) => {
 	return (
 		<div>
 			<nav>
@@ -21,7 +21,7 @@ const CategoryPicker = ({categoryVideos, categories}) => {
 					}
 				</ul>
 			</nav>
-			<VideosList categoryVideos={categoryVideos} />
+			<VideosList />
 		</div>
 	)
 };
