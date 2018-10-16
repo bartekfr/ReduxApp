@@ -4,11 +4,9 @@ import { filterCategory }  from '../actions';
 import { getAllCategories } from '../reducers';
 import { createSelector } from 'reselect'
 
-const mapStateToProps = (state, ownProps) => {
-	return {
-		categories: getAllCategories(state)
-	}
-};
+const mapStateToProps = (state, ownProps) => ({
+	categories: getAllCategories(state)
+});
 
 const Picker = connect(
 	mapStateToProps

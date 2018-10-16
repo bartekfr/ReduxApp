@@ -4,20 +4,16 @@ import { add }  from '../actions';
 import shortid from 'shortid';
 import { getAllCategories } from '../reducers';
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		update: (data) => {
-			data.id = shortid.generate();
-			dispatch(add(data));
-		}
+const mapDispatchToProps = (dispatch) => ({
+	update: (data) => {
+		data.id = shortid.generate();
+		dispatch(add(data));
 	}
-};
+});
 
-const mapStateToProps = (state, ownProps) => {
-	return {
-		categories: getAllCategories(state)
-	}
-};
+const mapStateToProps = (state, ownProps) => ( {
+	categories: getAllCategories(state)
+});
 
 const AddVideo = connect(
 	mapStateToProps,

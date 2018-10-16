@@ -30,7 +30,7 @@ const renderFieldSelect = ({ input, categories, label, type, meta: { touched, er
 	<div>
 		<div>
 			<select {...input}>
-				<option>Select category</option>
+				<option value="" >Select category</option>
 				{categories.map((category) => {
 					return (
 							<option key={category.id} value={category.id}>{category.name}</option>

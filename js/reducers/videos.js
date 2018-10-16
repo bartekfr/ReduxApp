@@ -38,12 +38,14 @@ let categoriesInit = {
 	"4": {id: 4, name: 'documentary'}
 };
 
+
+// selectors
+// TODO: move to separate module and consider using Reselect
 export const categoriesById = (state = Map(categoriesInit), action) => {
 	//TODO: categories list modifications
 	return state;
 };
 
-//selectors
 export const getAllCategories = (state) => {
 	return state.categoriesById.toArray();
 };

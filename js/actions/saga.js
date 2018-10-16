@@ -13,11 +13,10 @@ function* fetchVideos(action) {
 	try {
 		const videos = yield call(loadVideos);
 		yield put(ACTIONS.videosLoaded(videos));
-		yield put(ACTIONS.ajaxEnd());
 	} catch (e) {
 		yield put(ACTIONS.ajaxError(e.message));
-		yield put(ACTIONS.ajaxEnd());
 	}
+	yield put(ACTIONS.ajaxEnd());
 }
 
 function* mySaga() {

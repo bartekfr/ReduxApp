@@ -2,20 +2,15 @@ import {connect} from 'react-redux';
 import main from '../components/App';
 import {videosLoad}  from '../actions';
 
+const mapStateToProps = (state, ownProps) => ({
+	loadingStatus: state.common.get('loading')
+});
 
-const mapStateToProps = (state, ownProps) => {
-	return {
-		loadingStatus: state.common.get('loading')
+const mapDispatchToProps = (dispatch) => ({
+	videosLoad: () => {
+		dispatch(videosLoad());
 	}
-};
-
-const mapDispatchToProps = (dispatch) => {
-	return {
-		videosLoad: () => {
-			dispatch(videosLoad());
-		}
-	}
-};
+});
 
 const mainContainer = connect(
 	mapStateToProps,

@@ -1,8 +1,8 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import addVideo from '../components/AddVideo';
-import {update, remove }  from '../actions';
+import { update, remove }  from '../actions';
 import { getAllVideos, getAllCategories } from '../reducers';
-import {createSelector} from 'reselect'
+import { createSelector } from 'reselect'
 
 const getId = (state, ownProps) =>  ownProps.params.id;
 
