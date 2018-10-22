@@ -4,7 +4,7 @@ import { filterCategory }  from '../actions';
 import { getAllCategories } from '../reducers';
 import { createSelector } from 'reselect'
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
 	categories: getAllCategories(state)
 });
 
